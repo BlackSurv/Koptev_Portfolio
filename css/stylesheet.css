@@ -1,362 +1,595 @@
-body, div, td {
-	font-family: Arial, Verdana,Geneva,sans-serif;
-	font-size: 14pt;
-	margin: 0;
-	text-align: left;
-	line-height: 1.5;
+﻿
+	body, div {
+		color: #ffffff;
+		font-family: Verdana,Geneva,sans-serif;
+		font-size: 10pt;
+		margin: 0 0;
+	}
+
+		body {
+		background-color: #ffffff;
+	}
+
+	a {
+		text-decoration: none;
+		color: #ffffff;
+	}
+		a:hover {
+			color: rgba(193, 199, 205, 0.5);
+		}
+
+/*:before нужен для того чтобы элемент отображался после предыдущего, то есть после картинки с медведями*/
+	.wrapper.style1:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: block;
+			z-index: 1;
+	}
+
+/*Див с картинами, их описаниями, заголовком и т.д.*/
+.inner {
+	text-align: center;
+	justify-content: center;
 }
-a {
-	color: rgb(240, 240, 240);
+	.inner h2 {
+		font-size: 2.5em;
+		margin-bottom: .25em;
+		margin-top: 1px;
+	}
+
+	.inner p {
+		font-size: 1em;
+	}
+
+/*Размещения картинок. Сначала делаем их в линию, затем делаем отступы */
+.image {
+	display: inline-block;
+	position: relative;
 }
-a:hover {
-	color:#d86d1e;
+	.image img {
+			display: block;
+			padding: 10px;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+/*Див внутри которого дивы с картинками*/
+.flex {
+	margin: 5px;
 }
 
-*,
-*before,
-*after {
-	box-sizing: border-box;
+/*Абзацы с описанием картин*/
+.flex p.description {
+	display: inline-block;
+	position: relative;
+	margin: 0px;
 }
 
-/* -----------------Резюме------------------- */
-.Resume {
-	display: grid;
-	grid-template-areas: "pos1 pos2"  
-						 "pos3 pos2" ; 
-	grid-template-columns: 40% 60%;
-	grid-template-rows: max-content 600px;
+/*Абзац под картинами с ссылкой на художника*/
+.AboutArtist {
+    font-size: 1.5em;
+    position: relative;
+    margin: 0% 10%;
+	text-align: center;
+	color: #000000;
 }
 
-.container {
+/*Подчеркиваем имя художника для наглядности того, что это ссылка*/
+.AboutArtist a {
+	text-decoration: underline;
+	color: #000000;
+
+}
+
+
+
+
+
+	#header {
+		position: absolute;
+		text-align: right;
+		width: 100%;
+		z-index: 10001;
+	}
+
+
+
+	#banner {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		background-color: #ffffff;
+		border-top: 0;
+		position: relative;
+		text-align: center;
+	}
+
+
+
+		#banner p {
+			font-size: 1.5em;
+		}
+/*строка width здесь задает расположение относительно оси Х, я не знаю как так получилось */
+		#banner h2 {
+			position: relative;
+			margin-left: 0%;
+			margin-top: 15%;
+			width: 100%;
+		}
+
+/*цвет фона для nav элемента*/
+nav {
+	margin: 0px 0px;
+	position: absolute;
 	width: 100%;
-	max-width: 1170px;
-	margin: 0 auto;
+	background: rgba(0, 0, 0, 0.6);
 }
-.PhoneScroll {
-    z-index: 3;
+
+/*убираем отступы, list-style убирает точки у списка */
+header ul {
+	padding:0;
+	margin:0;
+	list-style: none;
+	position: relative;
+}
+
+/*inline-block для элементов в навигационном поле и цвет заднего фона для выпадающего списка*/
+.menu{
+	display: inline-block;
+	margin: 0;
+	padding: 0 50px;
+	font-size: 1.25em;
+}
+header ul li:hover {
+	background-color: rgba(128, 128, 128, 0.6);
+}
+
+/* стили ссылок */
+header a {
+	display: block;
+	padding: 0px 0px;
+	color: #FFFFFF;
+	font-size: 20px;
+	line-height: 7vh;
+	text-decoration: none;
+}
+
+/* при наведении на ссылку фон будет меняться */
+
+
+/*делаем так чтобы выпадающий список был скрыт по умолчанию и задаем его позицию*/
+header ul.submenu {
+	display: none;
+	position: absolute;
+	right: 120px;
+
+}
+
+/*отображаем список при наведении*/
+header ul li:hover > ul {
+	display: inherit;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 999;
+}
+
+/*настройки стиля для выпадающего списка*/
+.submenu li {
+	padding: 0 10px;
+	float: none;
+	display: list-item;
+	position: relative;
+}
+
+
+
+/* Слайды */
+
+.content{
+	width: 100%;
     position: absolute;
-	display:none;
-    bottom: 3vh;
-    height: 12vw;
-    width: 12vw;
-    right: 42%;
-    opacity: 80%;
-}
-.Photo {
-	width:100%;
-	height:100%;
-	z-index: 1;
-	object-fit: cover;
-}
-.PhotoGradient{
-	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,212,255,0) 100%);
-    position: absolute;
-	display:none;
+    z-index: 1002;
+    top: 0;
+    left: 0;
     bottom: 0;
-    z-index: 2;
-    height: 20vh;
+    box-sizing: border-box;
+    opacity: 1;
+    transition: transform 400ms ease-in-out, opacity 400ms ease-in-out;
+}
+.content_header{
+	position: absolute;
+	bottom: 0vh;
+	left: 15vw;
+    right: 15vw;
+    box-sizing: border-box;
+	padding: 0;
+	text-align: center;
+}
+
+#video-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+	z-index: 1;
+	min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+
+}
+
+#video-bg > video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+/* Проверка на object fit  */
+ @supports (object-fit: cover) {
+     #video-bg > video {
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+     }
+ }
+
+.Slides .SlidesInSlides{
+	display: none;
+}
+
+
+.dot {
+	cursor: pointer;
+	display: inline-block;
+  }
+.dot:after {
+  background-color: #ffffff;
+  margin: 7px 0;
+  display: block;
+  content: "";
+  height: 2px;
+  width: 0%;
+  -webkit-transition: width .5s ease-in-out;
+  -moz--transition: width .5s ease-in-out;
+  transition: width .5s ease-in-out;
+}
+
+.active:after, .dot:hover:after, .dot:focus:after {
     width: 100%;
 }
-.ResumePhoto {
-	margin-left: 0;
-    margin-right: 0;
-	grid-area: pos1;
-}
-
-.AboutMe {
-	background-color:rgb(240, 240, 240);
-	grid-area: pos2;
-	color: #4a30da;
-	padding: 5% 15% ;
-
-}
-.AboutMe>a {
-	color: rgb(74,48,218);
-	font-size: 30px;
-    font-family: Arial Black;
-
-}
-.AboutMe>a:hover {
-	color:#d86d1e;
-}
-.name {
-	font-size: 42px;
-	font-family: Arial Black;
-	line-height: 1.1;
-}
-.name::after {
-	background-color:rgb(74,48,218);
-	margin: 18px 0 36px;
-	display: block;
-	content: "";
-	height: 4px;
-	width: auto;
-}
-.heading {
-	font-size: 30px;
-	font-family: Arial Black;
-}
-.lheading {
-	font-size: 13pt;
-	font-family: Arial Black;
-}
-
-.Education {
-	display: grid;
-    grid-template-areas:
-        "ps1 ps2";
-    grid-template-rows: max-content;
-}
 
 
-.contact {
-	background-color:rgb(74,48,218);
-	grid-area: pos3;
-	padding: 5% 15% ;
-	color: rgb(240, 240, 240);
-}
+  /* Анимация затухания */
+  .fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 2.5s;
+  }
 
-/* -----------------Слайд шоу------------------- */
+  @-webkit-keyframes fade {
+	from {opacity: .3}
+	to {opacity: 1}
+  }
 
-
-.slider {
-	display: grid;
-	grid-template-areas: "pos6 pos0 pos9"  
-						 "pos2 pos3 pos4"
-						 "pos7 pos1 pos8" ; 
-	grid-template-columns: 64px auto 64px;
-	grid-template-rows: 60px 600px 64px;
-	color: rgb(240, 240, 240);
-	background-color:rgb(74,48,218);
-}
-.title_slider {
-	grid-area: pos0;
-	display: flex;
-	justify-content: flex-start;
-	align-items:center;
-	font-family: Arial Black;
-	font-size: 30px;
-
-}
-
-.text_slider {
-	grid-area: pos1;
-	justify-content: flex-start;
-	align-items: center;
-	font-size: 24px;
-}
-.image_slider {
-	grid-area: pos3;
-	justify-content: center;
-	align-items:center;
-}
-.image_slider img {
+  @keyframes fade {
+	from {opacity: .3}
+	to {opacity: 1}
+  }
+/*
+  .SlidesInSlides1, .SlidesInSlides2, .SlidesInSlides3{
+	height:100%;
 	width: 100%;
-	height: 100%;
-	object-fit: contain;
+  } */
+  #video-bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
 }
-.image_slider video {
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
-}
-.previous, .next {
-    cursor: pointer;
-    width: 32px;
-	color: rgb(240, 240, 240);
-    font-weight: bold;
-    font-size: 30px;
-	padding: 16px;
-    transition: 0.6s ease;
-	display: flex;
-	justify-content: center;
-	align-items:center;
-}
-.slider .next {
-	grid-area: pos4;
-}
-.slider .previous {
-	grid-area: pos2;
-}
-
-/* При наведении на кнопки добавляем фон кнопок */
-.slider .previous:hover,
-.slider .next:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-}
-/* Анимация слайдов */
-.slider .image_slider {
-    animation-name: fade;
-    animation-duration: 1s;
-}
-@keyframes fade {
-    from {
-        opacity: 0.4
-    }
-    to {
-        opacity: 1
-    }
-}
-
-
-/* -----------------Таблица------------------- */
-
-
-table{
-	border-spacing: 0px;
-}
-td {
-	border: 1px solid rgb(0, 0, 0);
-	padding: 6px;
+/* Проверка на object fit  */
+ @supports (object-fit: cover) {
+     #video-bg img {
+         top: 0;
+		 left: 0;
+         width: 100%;
+         height: 100%;
+		 object-fit: cover;
+		 padding: 7vh 48px;
+		 box-sizing: border-box;
+     }
  }
 
 
-/* -----------------Форма обратной связи------------------- */
-
-.feedback {
-	display: flex;
-	justify-content: center;
-	background-color:rgb(240, 240, 240);
-
+.TitleSlide{
+	font-size: 1.5em;
+	margin-bottom: .25em;
+    letter-spacing: normal !important;
+    height: auto !important;
+    transform: none;
 }
-.obratnuj-zvonok{
-	width: 100%;
-	max-width: 450px;
-}
-.form-zvonok{
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	padding: 0 20px;
-	box-sizing: border-box;
-}
-.form-zvonok div{
-	padding: 15px 0;
-}
-.bot-send-mail{
-	box-sizing: border-box;
-	width: 100%;
-}
-.form-zvonok label,.form-zvonok input{
-	display: block;
-	width: 100%;
-	box-sizing: border-box;
-}
-.form-zvonok label{
-	margin-bottom: 5px;
-	font-weight: bold;
-}
-.form-zvonok input{
-	padding: 10px 15px;
-	margin-top: 10px;
-}
-.form-zvonok label span{
-	color: red;
+.TitleSlide h1{
+	margin:0px;
 }
 
-.messagebox {
-	height: auto;
-}
-.form-zvonok .bot-send-mail{
-	padding: 15px;
-	background: none;
-	border: none;
-	text-transform: uppercase;
-	color: #fff;
-	font-weight: bold;
-	background-color:rgb(74,48,218);
-	cursor: pointer;
-	border: 3px rgb(74,48,218) solid;
-}
-.form-zvonok .bot-send-mail:hover{
-	color: rgb(74,48,218);
-	background-color: #fff;
+.dec.wrap img {
+	width: 327px;
+	height: 390px;
+	margin-top: 15%;
 }
 
-/* -----------------footer------------------- */
+/*
+.Arts {
+	display: inline-block;
+	width: 400px;
+	position: relative;
+	margin-top: 15%;
+	margin-right: 2%;
+} */
 
-.footer {
-	display: flex;
-	background-color:rgb(74,48,218);
-	color: #fff;
-	justify-content: space-between;
-	padding: 15px 20px ;
-}
-.footer>div {
-	font-size: 12pt;
-}
-
-
-@media screen and (max-device-width: 764.98px){
-	.body {
-		padding: 0px ;
-	}
-	/* -----------------Резюме------------------- */
-.Resume {
-	display: grid;
-	grid-template-areas: "pos1"  
-						 "pos2"
-						 "pos3" ; 
-	grid-template-columns: auto;
-	grid-template-rows: auto;
-}
-.AboutMe {
-	padding: 5% 6% ;
-}
-.contact {
-	padding: 5% 6% ;
+.wrap h2, h3 {
+	color: black;
+	align-items: center;
 }
 
-.Education {
-	grid-gap: 10px;
-
-}
-.slider {
-	display: grid;
-	grid-template-areas: "pos0 pos0 pos0"  
-						 "pos2 pos3 pos4"
-						 "pos1 pos1 pos1" ; 
-	grid-template-columns: 64px auto 64px;
-	grid-template-rows: 60px auto max-content;
-	color: rgb(240, 240, 240);
-
-}
-.title_slider {
-	padding-left: 30px;
-
+.decoration {
+	position: relative;
+	margin-top: 0%;
+	padding-right: 0%;
+	margin-right: 9%;
+	display: inline-block;
 }
 
-.text_slider {
-	padding: 16px;
-
-}
-
-.PhoneScroll {
-	display: block;
-}
-.ResumePhoto {
+.wrap {
+	position: relative;
+	margin-top: 0%;
+	margin-left: -5%;
 	height: 100vh;
+	background-color: white;
+	margin-left: 0%;
 }
-.PhotoGradient{
+
+.wrapArt {
+	position: relative;
+	margin-top: 0%;
+	margin-left: -5%;
+	height: 100vh;
+	background-color: white;
+	margin-left: 0%;
+}
+
+#banner header {
+	position: absolute;
+	margin-top: -20%;
+}
+
+.dec.wrap {
+	margin-top: 0%;
+	position: absolute;
+	height: 700px;
+	width: 100%;
+	margin-left: 5%;
+	background-color: transparent;
+}
+
+.dec.wrap1 {
+	margin-top: 20%;
+	left: 0%;
+	position: absolute;
+	height: 500px;
+	width: 100%;
+	padding-left: 5%;
+	margin-left: 0%;
+	margin-right: 9%;
+	background-color: white;
+}
+
+.dec.wrap1 img {
+	width: 327px;
+	height: 390px;
+	margin-top: 15%;
+}
+
+.biography_art3 {
+	position: relative;
+	color: #FFFFFF;
+	margin-left: 55%;
+	margin-top: -27%;
+	width: 600px;
+	text-align: center;
+	height: 100vh;
 	display: block;
 }
 
+.biography_art3 h3 {
+	color: white;
+	text-shadow: black 1 0 1px;
+	font-size: 1.7em;
+	text-shadow:
+		-0   -2px 2px #000000,
+		 0   -2px 2px #000000,
+		-0    2px 2px #000000,
+		 0    2px 2px #000000,
+		-2px -0   2px #000000,
+		 2px -0   2px #000000,
+		-2px  0   2px #000000,
+		 2px  0   2px #000000,
+		-1px -2px 2px #000000,
+		 1px -2px 2px #000000,
+		-1px  2px 2px #000000,
+		 1px  2px 2px #000000,
+		-2px -1px 2px #000000,
+		 2px -1px 2px #000000,
+		-2px  1px 2px #000000,
+		 2px  1px 2px #000000,
+		-2px -2px 2px #000000,
+		 2px -2px 2px #000000,
+		-2px  2px 2px #000000,
+		 2px  2px 2px #000000,
+		-2px -2px 2px #000000,
+		 2px -2px 2px #000000,
+		-2px  2px 2px #000000,
+		 2px  2px 2px #000000;
 }
 
-@media screen and (min-device-width: 767.98px){
-	.body {
-		padding: 0 calc(50vw - 450px);
-	}
+.biography_art3 p {
+	text-align: left;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-shadow:
+		-0   -2px 2px #000000,
+		 0   -2px 2px #000000,
+		-0    2px 2px #000000,
+		 0    2px 2px #000000,
+		 -2px -2px 2px #000000,
+		 2px -2px 2px #000000,
+		-2px  2px 2px #000000,
+		 2px  2px 2px #000000;
 }
 
-@media screen and (min-device-width: 991.98px) {
-	.body {
-		padding: 0 calc(50vw - 490px);
-	}
+.biography {
+	position: relative;
+	color: #FFFFFF;
+	margin-left: 64%;
+	margin-top: 5%;
+	width: 600px;
+	text-align: center;
+	height: 100vh;
+	display: block;
 }
-@media screen and  (min-device-width: 1199.98px){
-	.body {
-		padding: 0 calc(50vw - 590px);
-	}
 
+.biography h3 {
+	color: white;
+	text-shadow: black 1 0 1px;
+	font-size: 1.7em;
+	text-shadow:
+		-0   -2px 2px #000000,
+		 0   -2px 2px #000000,
+		-0    2px 2px #000000,
+		 0    2px 2px #000000,
+		-2px -0   2px #000000,
+		 2px -0   2px #000000,
+		-2px  0   2px #000000,
+		 2px  0   2px #000000,
+		-1px -2px 2px #000000,
+		 1px -2px 2px #000000,
+		-1px  2px 2px #000000,
+		 1px  2px 2px #000000,
+		-2px -1px 2px #000000,
+		 2px -1px 2px #000000,
+		-2px  1px 2px #000000,
+		 2px  1px 2px #000000,
+		-2px -2px 2px #000000,
+		 2px -2px 2px #000000,
+		-2px  2px 2px #000000,
+		 2px  2px 2px #000000,
+		-2px -2px 2px #000000,
+		 2px -2px 2px #000000,
+		-2px  2px 2px #000000,
+		 2px  2px 2px #000000;
+}
+
+.biography p {
+	text-align: left;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-shadow:
+		-0   -2px 2px #000000,
+		 0   -2px 2px #000000,
+		-0    2px 2px #000000,
+		 0    2px 2px #000000,
+		 -2px -2px 2px #000000,
+		 2px -2px 2px #000000,
+		-2px  2px 2px #000000,
+		 2px  2px 2px #000000;
+}
+
+.photo img {
+	margin-top: 7%;
+	margin-left: 20%;
+	width: 18%;
+	height: 50%;
+}
+
+
+.pictures {
+	position: relative;
+	margin-left: 0%;
+	margin-top: 1%;
+	display: inline-block;
+	color: black;
+}
+
+
+.pictures img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+
+.pictures p, h3 {
+	text-align: center;
+}
+
+
+.Table{
+	margin-top: 10vh;
+    width: 100% !important;
+    height: 80% !important;
+}
+
+
+.Table > ul > li {
+
+    width: fit-content !important;
+    height: fit-content  !important;
+    margin: 50px 18px;
+    position: static;
+    float: left;
+    display: inline-block;
+    vertical-align: top;
+}
+.Table #Boxes {
+    width: 550px;
+    height: 600px;
+    position: relative;
+    color: #111111;
+}
+
+.Table .titles {
+    line-height: 40px;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    font-size: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    letter-spacing: -0.5px;
+}
+
+#Boxes img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+.backpic h1 {
+	font-size: 3em;
+	color: black;
 }
