@@ -18,6 +18,8 @@ a:hover {
 	box-sizing: border-box;
 }
 
+
+
 /* -----------------Резюме------------------- */
 .Resume {
 	display: grid;
@@ -92,6 +94,29 @@ a:hover {
 	padding: 5% 15% ;
 	color: rgb(240, 240, 240);
 }
+.galleryName {
+	background-color:rgb(74,48,218);
+	height:100px;
+	display: flex;
+	justify-content: center;
+}
+.galleryName p {
+	color: rgb(240, 240, 240);
+}
+/* .portfolio::before {
+	background-color: #2e2e2e;
+	display: block;
+	content: "";
+	height: 4px;
+	width: 100%;
+}
+.gallery::before {
+	background-color: #2e2e2e;
+	display: block;
+	content: "";
+	height: 4px;
+	width: 100%;
+} */
 
 /* -----------------Слайд шоу------------------- */
 .slider {
@@ -299,6 +324,15 @@ td {
 	}
 	.PhotoGradient{
 		display: block;
+	}
+	.galleryName {
+		background-color: rgb(240, 240, 240);
+		height:100px;
+		display: flex;
+		justify-content: center;
+	}
+	.galleryName p {
+		color: #2e2e2e;
 	}
 	}
 @media screen and (min-device-width: 767.98px){
